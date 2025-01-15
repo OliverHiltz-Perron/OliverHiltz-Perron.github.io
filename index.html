@@ -1,7 +1,108 @@
 <!DOCTYPE html>
-    <html>
-        <body>
-            <h1>Hello World</h1>
-            <p>I'm hosted with GitHub Pages.</p>
-        </body>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliver Hiltz-Perron - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            margin: 0 auto;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+        .project {
+            margin-bottom: 1.5rem;
+        }
+        .project h3 {
+            margin: 0;
+            color: #0073e6;
+        }
+        .project p {
+            margin: 0.5rem 0 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Oliver Hiltz-Perron</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#resume">Resume</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm Oliver Hiltz-Perron, a project manager and developer passionate about combining technology and problem-solving to create impactful solutions. Welcome to my portfolio!</p>
+        </section>
+        <section id="resume">
+            <h2>Resume</h2>
+            <p>You can download my resume <a href="resume.pdf" target="_blank">here</a>.</p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1: Legal Document RAG System</h3>
+                <p>A retrieval-augmented generation system to extract necessary permits from legal documents.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2: Confidential Data Processing</h3>
+                <p>Backend lead for secure analysis of unstructured text data in social work research.</p>
+            </div>
+            <!-- Add more projects here -->
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Feel free to reach out via <a href="mailto:oliver.hiltz.perron@example.com">email</a> or connect with me on <a href="https://www.linkedin.com/in/oliver-hiltz-perron" target="_blank">LinkedIn</a>.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Oliver Hiltz-Perron. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

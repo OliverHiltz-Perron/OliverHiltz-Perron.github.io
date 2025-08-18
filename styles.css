@@ -535,6 +535,34 @@ nav {
     border-color: var(--primary-color);
 }
 
+.project-preview-custom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: white;
+    position: relative;
+}
+
+.project-preview-custom i {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.project-year {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.date-range {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-top: 5px;
+}
+
 /* Accomplishments Section */
 .timeline {
     position: relative;

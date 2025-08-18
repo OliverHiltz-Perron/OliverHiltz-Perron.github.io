@@ -19,6 +19,8 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#demos">Demos</a></li>
                     <li><a href="#papers">Papers</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -164,6 +166,107 @@
                 </div>
 
                 <!-- Add more project cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Technical Blog</h2>
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-date">January 2025</div>
+                    <h3>Building a RAG Pipeline for Policy Analysis</h3>
+                    <div class="blog-tags">
+                        <span>RAG</span>
+                        <span>Python</span>
+                        <span>Research</span>
+                    </div>
+                    <p>Deep dive into implementing hybrid search with Qdrant for processing 2,000+ pages of government documents. Learn how we achieved 95% accuracy using vector embeddings and BM25...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-date">December 2024</div>
+                    <h3>Optimizing Semantic Search with Cross-Encoder Reranking</h3>
+                    <div class="blog-tags">
+                        <span>ML</span>
+                        <span>NLP</span>
+                        <span>Optimization</span>
+                    </div>
+                    <p>How cross-encoder reranking improved our retrieval precision by 40%. Includes benchmarks and implementation details using Jina AI...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-date">November 2024</div>
+                    <h3>From YMCA to AI Research: My Journey</h3>
+                    <div class="blog-tags">
+                        <span>Career</span>
+                        <span>Personal</span>
+                    </div>
+                    <p>Reflecting on how leading youth volunteers taught me project management skills that I now apply to AI research teams...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="demos" class="demos">
+        <div class="container">
+            <h2 class="section-title">Interactive Demos</h2>
+            <div class="demos-grid">
+                <!-- Demo 1: Algorithm Visualizer -->
+                <div class="demo-card">
+                    <h3>Sorting Algorithm Visualizer</h3>
+                    <div class="demo-container">
+                        <div id="sort-visualizer" class="visualizer">
+                            <div class="bars-container">
+                                <!-- Will be populated by JS -->
+                            </div>
+                            <div class="controls">
+                                <button onclick="startSort('bubble')">Bubble Sort</button>
+                                <button onclick="startSort('quick')">Quick Sort</button>
+                                <button onclick="startSort('merge')">Merge Sort</button>
+                                <button onclick="resetArray()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Watch different sorting algorithms in action. Compare their performance and understand their behavior.</p>
+                </div>
+
+                <!-- Demo 2: RAG Search Demo -->
+                <div class="demo-card">
+                    <h3>Semantic Search Demo</h3>
+                    <div class="demo-container">
+                        <input type="text" id="search-input" placeholder="Try: 'child welfare prevention services'" class="demo-input">
+                        <button onclick="performSemanticSearch()">Search</button>
+                        <div id="search-results" class="demo-results">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                    <p>Experience semantic search in action. This demo uses embeddings to find contextually relevant results.</p>
+                </div>
+
+                <!-- Demo 3: Path Finding Visualizer -->
+                <div class="demo-card">
+                    <h3>Pathfinding Algorithm Visualizer</h3>
+                    <div class="demo-container">
+                        <div id="pathfinder-grid" class="pathfinder-grid">
+                            <!-- Grid will be populated by JS -->
+                        </div>
+                        <div class="controls">
+                            <button onclick="findPath('dijkstra')">Dijkstra</button>
+                            <button onclick="findPath('astar')">A* Search</button>
+                            <button onclick="findPath('bfs')">BFS</button>
+                            <button onclick="resetGrid()">Reset</button>
+                        </div>
+                    </div>
+                    <p>Visualize how different pathfinding algorithms work. Click to set start/end points and obstacles.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -335,6 +438,348 @@
         </div>
     </section>
 
+    <!-- GitHub Contribution Timeline -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Contribution Timeline</h2>
+            <div class="github-calendar">
+                <!-- GitHub contribution graph will be loaded here -->
+                <div id="github-contributions"></div>
+            </div>
+            <div class="contribution-stats">
+                <div class="stat-card">
+                    <h3>Total Commits</h3>
+                    <p class="stat-number" id="total-commits">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pull Requests</h3>
+                    <p class="stat-number" id="total-prs">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Issues Resolved</h3>
+                    <p class="stat-number" id="issues-resolved">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Repositories</h3>
+                    <p class="stat-number" id="repo-count">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippets Showcase -->
+    <section id="snippets" class="code-snippets">
+        <div class="container">
+            <h2 class="section-title">Code Showcase</h2>
+            <div class="snippets-grid">
+                <div class="snippet-card">
+                    <h3>Elegant RAG Implementation</h3>
+                    <pre><code class="language-python"># Hybrid search combining dense and sparse retrieval
+async def hybrid_search(query: str, top_k: int = 10):
+    # Dense vector search
+    dense_results = await qdrant.search(
+        collection_name="documents",
+        query_vector=embed(query),
+        limit=top_k * 2
+    )
+    
+    # Sparse BM25 search
+    sparse_results = bm25_index.search(query, top_k * 2)
+    
+    # Fusion with weighted scores
+    combined = reciprocal_rank_fusion(
+        dense_results, 
+        sparse_results,
+        weights=[0.7, 0.3]
+    )
+    
+    # Cross-encoder reranking
+    return rerank_with_cross_encoder(combined, query, top_k)</code></pre>
+                    <p class="snippet-description">Combines dense embeddings with BM25 for optimal retrieval performance</p>
+                </div>
+                
+                <div class="snippet-card">
+                    <h3>Performance Optimization</h3>
+                    <pre><code class="language-python"># Before: O(n²) complexity
+def find_duplicates_naive(papers):
+    duplicates = []
+    for i, paper1 in enumerate(papers):
+        for paper2 in papers[i+1:]:
+            if similarity(paper1, paper2) > 0.95:
+                duplicates.append((paper1, paper2))
+    return duplicates
+
+# After: O(n log n) with LSH
+def find_duplicates_optimized(papers):
+    lsh = MinHashLSH(threshold=0.95)
+    for idx, paper in enumerate(papers):
+        lsh.insert(f"doc_{idx}", get_minhash(paper))
+    
+    return [(papers[i], papers[j]) 
+            for i, neighbors in enumerate(lsh.query_all())
+            for j in neighbors if i < j]</code></pre>
+                    <p class="snippet-description">Reduced duplicate detection time from hours to minutes using LSH</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading List -->
+    <section id="reading" class="reading-list">
+        <div class="container">
+            <h2 class="section-title">Reading List & Resources</h2>
+            <div class="reading-grid">
+                <div class="reading-category">
+                    <h3>Currently Reading</h3>
+                    <ul class="book-list">
+                        <li>
+                            <span class="book-title">Designing Data-Intensive Applications</span>
+                            <span class="book-author">Martin Kleppmann</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="book-title">The Alignment Problem</span>
+                            <span class="book-author">Brian Christian</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 40%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reading-category">
+                    <h3>Recommended Papers</h3>
+                    <ul class="paper-list">
+                        <li>
+                            <a href="#">"Attention Is All You Need" - Transformer architecture fundamentals</a>
+                        </li>
+                        <li>
+                            <a href="#">"BERT: Pre-training of Deep Bidirectional Transformers" - NLP breakthrough</a>
+                        </li>
+                        <li>
+                            <a href="#">"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reading-category">
+                    <h3>Learning Resources</h3>
+                    <ul class="resource-list">
+                        <li>🎓 Fast.ai - Practical Deep Learning</li>
+                        <li>📚 Papers with Code - Implementation references</li>
+                        <li>🔧 Hugging Face - NLP tools and models</li>
+                        <li>📊 Towards Data Science - Technical articles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Radar -->
+    <section id="tech-radar" class="tech-radar">
+        <div class="container">
+            <h2 class="section-title">Technology Radar</h2>
+            <div class="radar-container">
+                <div class="radar-ring production">
+                    <h3>Production Ready</h3>
+                    <div class="tech-items">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">React</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Git</span>
+                    </div>
+                </div>
+                <div class="radar-ring learning">
+                    <h3>Currently Learning</h3>
+                    <div class="tech-items">
+                        <span class="tech-item">Rust</span>
+                        <span class="tech-item">Kubernetes</span>
+                        <span class="tech-item">GraphQL</span>
+                        <span class="tech-item">WebAssembly</span>
+                    </div>
+                </div>
+                <div class="radar-ring exploring">
+                    <h3>Exploring</h3>
+                    <div class="tech-items">
+                        <span class="tech-item">Quantum Computing</span>
+                        <span class="tech-item">Blockchain</span>
+                        <span class="tech-item">Edge AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Oliver's work on the RAG pipeline demonstrated exceptional technical depth and research rigor. His ability to bridge theoretical concepts with practical implementation is remarkable."</p>
+                    <div class="testimonial-author">
+                        <strong>Dr. Brian Perron</strong>
+                        <span>Professor, University of Michigan</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As Project Manager at QMIND, Oliver showed outstanding leadership in guiding our team through complex NLP challenges. His technical expertise and communication skills were invaluable."</p>
+                    <div class="testimonial-author">
+                        <strong>Team Member</strong>
+                        <span>Queen's AI Club</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Oliver's dedication and innovative approach to fraud detection helped us identify critical issues in academic publishing. A truly impactful contribution."</p>
+                    <div class="testimonial-author">
+                        <strong>Research Supervisor</strong>
+                        <span>Parallel 42</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Work -->
+    <section id="academic" class="academic-work">
+        <div class="container">
+            <h2 class="section-title">Academic Work</h2>
+            <div class="academic-grid">
+                <div class="course-card">
+                    <h3>CISC 351: Advanced Data Analytics</h3>
+                    <p class="grade">Grade: A+</p>
+                    <p>Implemented distributed computing algorithms for large-scale data processing. Final project on optimizing MapReduce for genomic data analysis.</p>
+                    <a href="#" class="project-link">View Project →</a>
+                </div>
+                <div class="course-card">
+                    <h3>CISC 452: Neural Networks</h3>
+                    <p class="grade">Grade: A</p>
+                    <p>Developed custom attention mechanisms for document understanding. Research on improving transformer efficiency for long documents.</p>
+                    <a href="#" class="project-link">View Research →</a>
+                </div>
+                <div class="course-card">
+                    <h3>CISC 474: Machine Learning</h3>
+                    <p class="grade">Grade: A+</p>
+                    <p>Created ensemble learning system for financial fraud detection. Achieved 97% accuracy on real-world dataset.</p>
+                    <a href="#" class="project-link">View Implementation →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaking & Teaching -->
+    <section id="speaking" class="speaking">
+        <div class="container">
+            <h2 class="section-title">Speaking & Teaching</h2>
+            <div class="speaking-grid">
+                <div class="speaking-card">
+                    <div class="speaking-date">March 2024</div>
+                    <h3>Workshop: Introduction to RAG Systems</h3>
+                    <p>Led a 2-hour workshop for QMIND members on building retrieval-augmented generation systems.</p>
+                    <div class="speaking-links">
+                        <a href="#">Slides</a>
+                        <a href="#">Recording</a>
+                        <a href="#">Code</a>
+                    </div>
+                </div>
+                <div class="speaking-card">
+                    <div class="speaking-date">February 2024</div>
+                    <h3>Guest Lecture: NLP in Policy Analysis</h3>
+                    <p>Presented research findings to graduate students at University of Michigan SSW.</p>
+                    <div class="speaking-links">
+                        <a href="#">Slides</a>
+                        <a href="#">Abstract</a>
+                    </div>
+                </div>
+                <div class="speaking-card">
+                    <div class="speaking-date">Ongoing</div>
+                    <h3>Python Tutoring</h3>
+                    <p>Provide weekly tutoring sessions for first-year CS students, focusing on data structures and algorithms.</p>
+                    <div class="speaking-links">
+                        <a href="#">Materials</a>
+                        <a href="#">Book Session</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Dashboard -->
+    <section id="metrics" class="metrics-dashboard">
+        <div class="container">
+            <h2 class="section-title">Impact Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Lines of Code</h3>
+                    <p class="metric-value">50,000+</p>
+                    <p class="metric-label">Across 15+ languages</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Users Impacted</h3>
+                    <p class="metric-value">500+</p>
+                    <p class="metric-label">Through research tools</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time Saved</h3>
+                    <p class="metric-value">95%</p>
+                    <p class="metric-label">In policy analysis</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Papers Analyzed</h3>
+                    <p class="metric-value">200+</p>
+                    <p class="metric-label">For fraud detection</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Students Mentored</h3>
+                    <p class="metric-value">30+</p>
+                    <p class="metric-label">In CS and AI</p>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Projects Completed</h3>
+                    <p class="metric-value">15+</p>
+                    <p class="metric-label">Research & development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals -->
+    <section id="goals" class="future-goals">
+        <div class="container">
+            <h2 class="section-title">Future Goals</h2>
+            <div class="goals-timeline">
+                <div class="goal-item">
+                    <div class="goal-year">2025</div>
+                    <h3>Complete First Author Publication</h3>
+                    <p>Publish research on RAG systems for policy analysis in top-tier conference</p>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-year">2026</div>
+                    <h3>Graduate Research Assistant</h3>
+                    <p>Pursue graduate studies focusing on AI safety and alignment</p>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-year">2027</div>
+                    <h3>Industry Research Internship</h3>
+                    <p>Join leading AI research lab (OpenAI, Anthropic, DeepMind)</p>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-year">Long-term</div>
+                    <h3>AI for Social Good</h3>
+                    <p>Lead research initiatives applying AI to critical social challenges</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="contact" class="contact">
         <div class="container">

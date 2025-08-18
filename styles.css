@@ -387,6 +387,11 @@ nav {
     margin-right: 5px;
 }
 
+.paper-pending {
+    opacity: 0.9;
+    font-style: italic;
+}
+
 /* Skills Section */
 .skills-content {
     display: flex;

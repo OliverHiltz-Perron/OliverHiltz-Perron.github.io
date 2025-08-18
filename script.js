@@ -134,8 +134,13 @@ async function fetchGitHubProjects() {
         const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
         const repos = await response.json();
         
-        // Filter out forked repositories and get only public ones
-        const publicRepos = repos.filter(repo => !repo.fork && !repo.private);
+        // Filter out forked repositories, private ones, and specific repos to exclude
+        const excludedRepos = ['Qdrant-Hybrid-Search-Implementation-Workflow', 'OliverHiltz-Perron.github.io'];
+        const publicRepos = repos.filter(repo => 
+            !repo.fork && 
+            !repo.private && 
+            !excludedRepos.includes(repo.name)
+        );
         
         // Create project cards for GitHub repositories
         publicRepos.forEach(repo => {

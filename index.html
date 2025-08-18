@@ -19,8 +19,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#demos">Demos</a></li>
                     <li><a href="#papers">Papers</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -166,107 +164,6 @@
                 </div>
 
                 <!-- Add more project cards as needed -->
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog">
-        <div class="container">
-            <h2 class="section-title">Technical Blog</h2>
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-date">January 2025</div>
-                    <h3>Building a RAG Pipeline for Policy Analysis</h3>
-                    <div class="blog-tags">
-                        <span>RAG</span>
-                        <span>Python</span>
-                        <span>Research</span>
-                    </div>
-                    <p>Deep dive into implementing hybrid search with Qdrant for processing 2,000+ pages of government documents. Learn how we achieved 95% accuracy using vector embeddings and BM25...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-date">December 2024</div>
-                    <h3>Optimizing Semantic Search with Cross-Encoder Reranking</h3>
-                    <div class="blog-tags">
-                        <span>ML</span>
-                        <span>NLP</span>
-                        <span>Optimization</span>
-                    </div>
-                    <p>How cross-encoder reranking improved our retrieval precision by 40%. Includes benchmarks and implementation details using Jina AI...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-date">November 2024</div>
-                    <h3>From YMCA to AI Research: My Journey</h3>
-                    <div class="blog-tags">
-                        <span>Career</span>
-                        <span>Personal</span>
-                    </div>
-                    <p>Reflecting on how leading youth volunteers taught me project management skills that I now apply to AI research teams...</p>
-                    <a href="#" class="read-more">Read More →</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="demos" class="demos">
-        <div class="container">
-            <h2 class="section-title">Interactive Demos</h2>
-            <div class="demos-grid">
-                <!-- Demo 1: Algorithm Visualizer -->
-                <div class="demo-card">
-                    <h3>Sorting Algorithm Visualizer</h3>
-                    <div class="demo-container">
-                        <div id="sort-visualizer" class="visualizer">
-                            <div class="bars-container">
-                                <!-- Will be populated by JS -->
-                            </div>
-                            <div class="controls">
-                                <button onclick="startSort('bubble')">Bubble Sort</button>
-                                <button onclick="startSort('quick')">Quick Sort</button>
-                                <button onclick="startSort('merge')">Merge Sort</button>
-                                <button onclick="resetArray()">Reset</button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Watch different sorting algorithms in action. Compare their performance and understand their behavior.</p>
-                </div>
-
-                <!-- Demo 2: RAG Search Demo -->
-                <div class="demo-card">
-                    <h3>Semantic Search Demo</h3>
-                    <div class="demo-container">
-                        <input type="text" id="search-input" placeholder="Try: 'child welfare prevention services'" class="demo-input">
-                        <button onclick="performSemanticSearch()">Search</button>
-                        <div id="search-results" class="demo-results">
-                            <!-- Results will appear here -->
-                        </div>
-                    </div>
-                    <p>Experience semantic search in action. This demo uses embeddings to find contextually relevant results.</p>
-                </div>
-
-                <!-- Demo 3: Path Finding Visualizer -->
-                <div class="demo-card">
-                    <h3>Pathfinding Algorithm Visualizer</h3>
-                    <div class="demo-container">
-                        <div id="pathfinder-grid" class="pathfinder-grid">
-                            <!-- Grid will be populated by JS -->
-                        </div>
-                        <div class="controls">
-                            <button onclick="findPath('dijkstra')">Dijkstra</button>
-                            <button onclick="findPath('astar')">A* Search</button>
-                            <button onclick="findPath('bfs')">BFS</button>
-                            <button onclick="resetGrid()">Reset</button>
-                        </div>
-                    </div>
-                    <p>Visualize how different pathfinding algorithms work. Click to set start/end points and obstacles.</p>
-                </div>
             </div>
         </div>
     </section>

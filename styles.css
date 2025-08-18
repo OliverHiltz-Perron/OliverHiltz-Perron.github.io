@@ -1,16 +1,18 @@
 /* Base Styles */
 :root {
-    --primary-color: #4a6cf7;
-    --secondary-color: #6c757d;
-    --background-color: #f8f9fa;
-    --dark-color: #212529;
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --background-color: #ffffff;
+    --dark-color: #0f172a;
     --light-color: #ffffff;
-    --border-color: #e9ecef;
-    --text-color: #495057;
-    --highlight-color: #4a6cf7;
-    --timeline-color: #f1f3f5;
-    --success-color: #28a745;
-    --error-color: #dc3545;
+    --border-color: #e2e8f0;
+    --text-color: #334155;
+    --highlight-color: #3b82f6;
+    --timeline-color: #f1f5f9;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --gradient-start: #3b82f6;
+    --gradient-end: #8b5cf6;
 }
 
 * {
@@ -195,7 +197,7 @@ nav {
     height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -222,19 +224,20 @@ nav {
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    color: var(--dark-color);
+    color: var(--light-color);
 }
 
 .hero-content h2 {
     font-size: 2rem;
     font-weight: 400;
     margin-bottom: 30px;
-    color: var(--secondary-color);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .hero-buttons {
@@ -430,6 +433,108 @@ nav {
     border-radius: 5px;
 }
 
+/* Papers Section */
+.papers {
+    background-color: var(--background-color);
+}
+
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.paper-card {
+    background: var(--light-color);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 20px;
+}
+
+.paper-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.paper-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.paper-content {
+    flex: 1;
+}
+
+.paper-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.paper-authors {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.paper-venue {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.paper-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.paper-links {
+    display: flex;
+    gap: 15px;
+}
+
+.paper-link {
+    padding: 8px 16px;
+    background-color: var(--timeline-color);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.paper-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.featured-project {
+    border: 2px solid var(--border-color);
+}
+
+.featured-project:hover {
+    border-color: var(--primary-color);
+}
+
 /* Accomplishments Section */
 .timeline {
     position: relative;
@@ -511,84 +616,55 @@ nav {
 }
 
 /* Contact Section */
-.contact-content {
-    display: flex;
-    gap: 50px;
+.contact {
+    background: linear-gradient(135deg, var(--timeline-color) 0%, var(--background-color) 100%);
 }
 
-.contact-info {
-    flex: 1;
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
-.contact-item {
-    margin-bottom: 30px;
-}
-
-.contact-item i {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.contact-item h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--dark-color);
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.social-links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--light-color);
-    color: var(--primary-color);
-    border-radius: 50%;
-    font-size: 1.2rem;
+.contact-card {
+    background: var(--light-color);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: 2px solid transparent;
 }
 
-.social-links a:hover {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    transform: translateY(-3px);
-}
-
-.contact-form {
-    flex: 2;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     border-color: var(--primary-color);
 }
 
-.form-group textarea {
-    height: 150px;
-    resize: vertical;
+.contact-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover i {
+    transform: scale(1.2);
+    color: var(--gradient-end);
+}
+
+.contact-card h3 {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
 }
 
 /* Footer */

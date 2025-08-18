@@ -123,3 +123,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Trigger animation on scroll
 window.addEventListener('scroll', animateOnScroll);
+
+// GitHub Projects Integration
+async function fetchGitHubProjects() {
+    const username = 'OliverHiltz-Perron'; // Replace with your GitHub username
+    const projectsContainer = document.getElementById('projects-container');
+    
+    try {
+        // Fetch user's repositories
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+        const repos = await response.json();
+        
+        // Filter out forked repositories and get only public ones
+        const publicRepos = repos.filter(repo => !repo.fork && !repo.private);
+        
+        // Create project cards for GitHub repositories
+        publicRepos.forEach(repo => {
+            const projectCard = createGitHubProjectCard(repo);
+            projectsContainer.insertAdjacentHTML('afterbegin', projectCard);
+        });
+        
+    } catch (error) {
+        console.error('Error fetching GitHub projects:', error);
+    }
+}
+
+function createGitHubProjectCard(repo) {
+    const language = repo.language || 'Various';
+    const description = repo.description || 'No description available';
+    const stars = repo.stargazers_count;
+    const forks = repo.forks_count;
+    
+    return `
+        <div class="project-card github-project" data-category="github">
+            <div class="project-image">
+                <div class="github-repo-preview">
+                    <i class="fab fa-github"></i>
+                    <div class="repo-stats">
+                        <span><i class="fas fa-star"></i> ${stars}</span>
+                        <span><i class="fas fa-code-branch"></i> ${forks}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <h3>${repo.name}</h3>
+                <p>${description}</p>
+                <div class="project-tags">
+                    <span>${language}</span>
+                    ${repo.topics ? repo.topics.slice(0, 2).map(topic => `<span>${topic}</span>`).join('') : ''}
+                </div>
+                <div class="project-links">
+                    <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Load GitHub projects when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    fetchGitHubProjects();
+});
+
+// Add styles for GitHub project preview
+const style = document.createElement('style');
+style.textContent = `
+    .github-repo-preview {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #24292e 0%, #40454a 100%);
+        color: white;
+        position: relative;
+    }
+    
+    .github-repo-preview i {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+    
+    .repo-stats {
+        display: flex;
+        gap: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .repo-stats span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .github-project {
+        animation: fadeInUp 0.5s ease;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);

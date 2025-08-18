@@ -1,65 +1,206 @@
-# Personal Portfolio Website
+# Oliver Hiltz-Perron's Portfolio Website
 
-A modern, responsive personal portfolio website built with HTML, CSS, and JavaScript to showcase projects and accomplishments.
+[![Deploy to GitHub Pages](https://github.com/OliverHiltz-Perron/OliverHiltz-Perron.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/OliverHiltz-Perron/OliverHiltz-Perron.github.io/actions/workflows/deploy.yml)
 
-## Features
+A modern, responsive portfolio website showcasing my projects, research papers, and professional accomplishments. Built with vanilla HTML, CSS, and JavaScript, featuring automatic GitHub repository integration.
 
-- Responsive design that works on all devices
-- Modern and clean UI/UX
-- Project showcase with filtering capability
-- Skills visualization
-- Timeline for accomplishments
-- Contact form
-- Smooth scrolling and animations
+🌐 **Live Site**: [https://oliverhiltz-perron.github.io](https://oliverhiltz-perron.github.io)
 
-## Pages/Sections
+## ✨ Features
 
-1. **Home** - Introduction and call-to-action
-2. **About** - Personal information and background
-3. **Projects** - Showcase of work with filtering
-4. **Skills** - Technical skills with visual indicators
-5. **Accomplishments** - Timeline of achievements
-6. **Contact** - Contact form and information
+### 🎨 Modern Design
+- Clean, professional layout with gradient color schemes
+- Fully responsive design for all devices
+- Smooth scroll animations and interactive hover effects
+- Dark mode accents with blue/purple gradients
 
-## Customization
+### 📊 Dynamic Content
+- **Automatic GitHub Integration**: Fetches and displays latest public repositories via GitHub API
+- **Project Filtering**: Filter projects by category (Featured, GitHub, Research)
+- **Real-time Updates**: GitHub projects update automatically without manual maintenance
 
-To customize this portfolio for your needs:
+### 📚 Organized Sections
+1. **Hero Section**: Eye-catching introduction with gradient background
+2. **About**: Personal bio, education, and experience
+3. **Projects**: Mix of featured projects and live GitHub repositories
+4. **Papers**: Dedicated section for research publications
+5. **Skills**: Visual skill bars organized by categories
+6. **Contact**: Professional links grid (GitHub, LinkedIn, Resume, etc.)
 
-1. Update personal information in `index.html`
-2. Replace placeholder images with your own
-3. Add your projects to the projects section
-4. Update skills and their levels
-5. Add your accomplishments to the timeline
-6. Update contact information
-7. Customize colors in the CSS variables (`:root` section in `styles.css`)
+## 🚀 Quick Start
 
-## Deployment
+### Prerequisites
+- A GitHub account
+- Basic knowledge of HTML/CSS (for customization)
 
-This portfolio is designed to be easily deployed on GitHub Pages:
+### Installation
 
-1. Fork or clone this repository
-2. Update content with your information
-3. Push to your GitHub repository
-4. Enable GitHub Pages in your repository settings
-   - Go to Settings > Pages
-   - Select 'main' branch as the source
-   - Save to deploy
+1. **Fork this repository** or clone it:
+   ```bash
+   git clone https://github.com/OliverHiltz-Perron/OliverHiltz-Perron.github.io.git
+   ```
 
-Your portfolio will be available at `https://[your-username].github.io/portfolio-website/`
+2. **Customize your information**:
+   - Edit `index.html` to update personal information
+   - Replace placeholder text with your actual content
+   - Update social media links in the Contact section
 
-## Technologies Used
+3. **Configure GitHub username**:
+   - Open `script.js`
+   - Update line 129 with your GitHub username:
+     ```javascript
+     const username = 'YourGitHubUsername';
+     ```
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Font Awesome for icons
+4. **Deploy to GitHub Pages**:
+   - Push changes to your repository
+   - Go to Settings → Pages
+   - Select "Deploy from a branch"
+   - Choose `main` branch and `/` (root) folder
+   - Your site will be live at `https://[username].github.io`
 
-## License
+## 📝 Customization Guide
+
+### Adding Papers
+Edit the Papers section in `index.html`:
+```html
+<div class="paper-card">
+    <div class="paper-icon">
+        <i class="fas fa-file-alt"></i>
+    </div>
+    <div class="paper-content">
+        <h3>Your Paper Title</h3>
+        <p class="paper-authors">Your Name, Co-Authors</p>
+        <p class="paper-venue">Conference/Journal, Year</p>
+        <p class="paper-description">Brief description</p>
+        <div class="paper-links">
+            <a href="link-to-pdf" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf"></i> PDF
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+### Adding Featured Projects
+Add project cards in the Projects section:
+```html
+<div class="project-card featured-project" data-category="featured">
+    <div class="project-image">
+        <img src="project-image.jpg" alt="Project Name">
+    </div>
+    <div class="project-info">
+        <h3>Project Name</h3>
+        <p>Project description</p>
+        <div class="project-tags">
+            <span>Technology1</span>
+            <span>Technology2</span>
+        </div>
+        <div class="project-links">
+            <a href="github-link" target="_blank"><i class="fab fa-github"></i> Code</a>
+            <a href="live-link" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+    </div>
+</div>
+```
+
+### Updating Contact Links
+Modify the contact cards in `index.html`:
+```html
+<a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-card">
+    <i class="fab fa-linkedin"></i>
+    <h3>LinkedIn</h3>
+    <p>Professional network</p>
+</a>
+```
+
+### Color Scheme
+Edit CSS variables in `styles.css`:
+```css
+:root {
+    --primary-color: #2563eb;      /* Main blue color */
+    --gradient-start: #3b82f6;     /* Gradient start color */
+    --gradient-end: #8b5cf6;       /* Gradient end color */
+    /* ... other colors */
+}
+```
+
+## 🛠️ Technologies Used
+
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with CSS Grid and Flexbox
+- **JavaScript**: Dynamic content and GitHub API integration
+- **Font Awesome**: Icon library
+- **GitHub API**: Automatic repository fetching
+- **GitHub Pages**: Free hosting
+- **GitHub Actions**: Automated deployment
+
+## 📂 Project Structure
+
+```
+OliverHiltz-Perron.github.io/
+├── index.html              # Main HTML file
+├── styles.css              # Styling
+├── script.js               # JavaScript functionality
+├── README.md               # Documentation
+└── .github/
+    └── workflows/
+        └── deploy.yml      # GitHub Pages deployment
+```
+
+## 🔧 Development
+
+### Local Development
+1. Clone the repository
+2. Open `index.html` in your browser
+3. Or use a local server:
+   ```bash
+   python3 -m http.server 8000
+   # Visit http://localhost:8000
+   ```
+
+### Making Changes
+1. Edit the relevant files
+2. Test locally
+3. Commit and push:
+   ```bash
+   git add .
+   git commit -m "Your message"
+   git push origin main
+   ```
+
+## 📱 Browser Compatibility
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - Font Awesome for icons
-- Google Fonts for typography
-- Placeholder images from [placeholder.com](https://placeholder.com)
+- GitHub for hosting and API
+- Inspired by modern portfolio designs
+
+## 📧 Contact
+
+Feel free to reach out:
+- GitHub: [@OliverHiltz-Perron](https://github.com/OliverHiltz-Perron)
+- Email: [your.email@example.com](mailto:your.email@example.com)
+
+---
+
+**Note**: Remember to update all placeholder content with your actual information before deploying!

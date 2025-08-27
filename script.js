@@ -131,7 +131,7 @@ async function fetchGitHubProjects() {
     
     try {
         // Fetch user's repositories
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=10`);
         const repos = await response.json();
         
         // Filter out forked repositories, private ones, and specific repos to exclude
@@ -141,19 +141,25 @@ async function fetchGitHubProjects() {
             'SoftwoodLumber',
             'OliverHiltz-Perron',
             'softwoodtestting',
-            'softwood2'
+            'softwood2',
+            'softwoodlumber'  // Different casing just in case
         ];
         const publicRepos = repos.filter(repo => 
             !repo.fork && 
             !repo.private && 
             !excludedRepos.includes(repo.name) &&
-            repo.description !== null  // Only show repos with descriptions
+            !excludedRepos.includes(repo.name.toLowerCase()) &&  // Case insensitive check
+            repo.description !== null && // Only show repos with descriptions
+            repo.name !== 'OliverHiltz-Perron' // Extra explicit check
         );
         
-        // Create project cards for GitHub repositories
-        publicRepos.forEach(repo => {
+        // Create project cards for GitHub repositories - limit to 3
+        publicRepos.slice(0, 3).forEach(repo => {
             const projectCard = createGitHubProjectCard(repo);
-            projectsContainer.insertAdjacentHTML('afterbegin', projectCard);
+            // Only insert if projectCard is not empty (extra safety check)
+            if (projectCard && projectCard.trim() !== '') {
+                projectsContainer.insertAdjacentHTML('beforeend', projectCard);
+            }
         });
         
     } catch (error) {
@@ -162,6 +168,12 @@ async function fetchGitHubProjects() {
 }
 
 function createGitHubProjectCard(repo) {
+    // Final safety check - don't create cards for these repos
+    const blockedRepos = ['SoftwoodLumber', 'OliverHiltz-Perron', 'softwoodlumber', 'oliverhiltz-perron'];
+    if (blockedRepos.includes(repo.name) || blockedRepos.includes(repo.name.toLowerCase())) {
+        return ''; // Return empty string for blocked repos
+    }
+    
     const language = repo.language || 'Various';
     const description = repo.description || 'No description available';
     const stars = repo.stargazers_count;

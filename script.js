@@ -135,11 +135,19 @@ async function fetchGitHubProjects() {
         const repos = await response.json();
         
         // Filter out forked repositories, private ones, and specific repos to exclude
-        const excludedRepos = ['Qdrant-Hybrid-Search-Implementation-Workflow', 'OliverHiltz-Perron.github.io'];
+        const excludedRepos = [
+            'Qdrant-Hybrid-Search-Implementation-Workflow', 
+            'OliverHiltz-Perron.github.io',
+            'SoftwoodLumber',
+            'OliverHiltz-Perron',
+            'softwoodtestting',
+            'softwood2'
+        ];
         const publicRepos = repos.filter(repo => 
             !repo.fork && 
             !repo.private && 
-            !excludedRepos.includes(repo.name)
+            !excludedRepos.includes(repo.name) &&
+            repo.description !== null  // Only show repos with descriptions
         );
         
         // Create project cards for GitHub repositories
@@ -200,20 +208,49 @@ style.textContent = `
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #24292e 0%, #40454a 100%);
+        background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
         color: white;
         position: relative;
+        overflow: hidden;
+    }
+    
+    .github-repo-preview::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.3; }
     }
     
     .github-repo-preview i {
-        font-size: 4rem;
+        font-size: 3.5rem;
         margin-bottom: 20px;
+        z-index: 1;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
     }
     
     .repo-stats {
         display: flex;
         gap: 20px;
         font-size: 0.9rem;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 8px 16px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
     }
     
     .repo-stats span {
@@ -222,19 +259,44 @@ style.textContent = `
         gap: 5px;
     }
     
-    .github-project {
-        animation: fadeInUp 0.5s ease;
+    .repo-stats i {
+        font-size: 0.85rem;
+        color: #FCD34D;
     }
     
-    @keyframes fadeInUp {
+    .github-project {
+        animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        animation-fill-mode: both;
+    }
+    
+    .github-project:nth-child(1) { animation-delay: 0.1s; }
+    .github-project:nth-child(2) { animation-delay: 0.2s; }
+    .github-project:nth-child(3) { animation-delay: 0.3s; }
+    .github-project:nth-child(4) { animation-delay: 0.4s; }
+    .github-project:nth-child(5) { animation-delay: 0.5s; }
+    .github-project:nth-child(6) { animation-delay: 0.6s; }
+    
+    @keyframes slideInUp {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         to {
             opacity: 1;
             transform: translateY(0);
         }
+    }
+    
+    .project-tags span {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: var(--text-color);
+        font-weight: 500;
+    }
+    
+    .featured-project .project-tags span {
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        border: 1px solid rgba(79, 70, 229, 0.2);
     }
 `;
 document.head.appendChild(style);
